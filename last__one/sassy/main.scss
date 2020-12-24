@@ -1,0 +1,178 @@
+@import "config";
+@import "media";
+
+body{
+    background-color: $background;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1;
+    
+    color:#fff;
+  
+   
+}
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 15px;
+    background-color: lighten(black, 10%);
+    position:fixed;
+    width:100%;
+
+
+    &__left{
+        z-index:20;
+        a{
+            font-size: 23px;
+           font-family: cursive;
+           @include transition;
+           
+           &::before{
+               content:"~"
+           }
+           &::after{
+              content:"~"
+           }
+         
+           &.open{
+               color:red;
+           }
+        }
+    }
+
+    nav{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100vw;
+        visibility: hidden;
+        opacity:0.98;
+     &.open{
+       
+         visibility: visible;
+     } 
+    }
+    &__nav{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+        height:100vh;
+        background-color: lighten(black , 10%);
+         transform: translateY(-100%);
+         @include transition;
+
+         &.open{
+             transform: translateY(0);
+         }
+        &-item{
+            padding:0.8rem 1.5rem;
+            margin-bottom:30px;
+            width:80%;
+            text-align: center;
+            transform: translateX(100vw);
+            @include transition;
+
+            &.open{
+            transform: translateX(0);
+
+            }
+
+            &.active{
+                border:1px solid green;
+                
+                .header__nav-link{
+                    color:green;
+                }
+            }
+            &:hover{
+              
+                .header__nav-link{
+                    color:lighten(RED , 30%);
+                }
+            }
+        }
+        &-link{
+            font-size:40px;
+            font-weight: 400;
+            @include transition;
+        }
+    }
+
+
+    &__btn{
+        position: absolute;
+        top:1rem;
+        right:1rem;
+        width:28px;
+        height:20px;
+        z-index:20;
+        @include transition;
+    }
+    &__hamburger{
+        position: absolute;
+        top:0.3rem;
+        right:0;
+        height:2px;
+        width:28px;
+        background-color: #fff;
+        cursor:pointer;
+        @include transition;
+
+        &::after{
+        content:"";
+        position: absolute;
+        top:8px;
+        right:0;
+        height:2px;
+        width:20px;
+        background-color: #fff;
+        @include transition;
+        }
+        &::before{
+            content:"";
+            position: absolute;
+            top:-8px;
+            right:0;
+            height:2px;
+            width:28px;
+            background-color: #fff;
+            @include transition;
+            }
+
+            &.open{
+                background-color: transparent;
+
+
+                &::before{
+                      transform: rotate(45deg) translate(4px , 8px); 
+                      background-color: green;       
+                }
+                &::after{
+                    width:28px;
+                    transform: rotate(-45deg) translate(2px ,-7px); 
+                      background-color: green;
+                }
+            }
+    }
+}
+
+@for $i from 1 through 4{
+    .header__nav-item:nth-child(#{$i}){
+        transition-delay: ($i * 0.15s) + 0.12s;
+    }
+}
+
+section{
+    padding-top:70px;
+    width:80%;
+    margin:auto;
+    text-align: center;
+
+    h1{
+        font-size: 40px;
+        padding:0.8rem 1rem;
+        
+    }
+}

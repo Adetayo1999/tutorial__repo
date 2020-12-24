@@ -1,0 +1,147 @@
+@import "config";
+@import "media";
+
+body{
+    background:$bodyColor;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a{
+    color:$links;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    background: transparent;
+      padding:0.8rem 1rem;
+      z-index: 100;
+
+    .header{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        
+     &__logo-link{
+         font-size: 20px;  
+         z-index: 100;
+     }
+        &__menu-btn{
+            position:absolute;
+            top:1rem;
+            right:1rem;
+            width:28px;
+            height:20px;
+            z-index: 100;
+            @include transition; 
+
+        }
+        &__menu-ham{
+            position: absolute;
+            right:0;
+            top:0.5rem;
+            width:28px;
+            height:2px;
+           background-color: #fff;
+           @include transition;
+           &::after{
+               content:"";
+               position: absolute;
+               top:8px;
+               width:20px;
+               height:2px;
+               background-color: #fff;
+               @include transition;
+           }
+           &::before{
+            content:"";
+            position: absolute;
+            top:-8px;
+            width:28px;
+            height:2px;
+            background-color: #fff;
+            @include transition;
+        }
+
+        &.open{
+            background: transparent;
+
+            &::after{
+                 width:28px;
+                 transform: rotate(-45deg) translate(6px , -5px );
+               
+            }
+            &::before{
+               transform: rotate(45deg) translate(7px ,4px );
+            }
+        }
+
+        }
+
+        nav{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100vw;
+            opacity:0.98;
+            visibility:hidden;
+            
+            
+            &.open{
+                visibility:visible;
+
+            }
+
+
+    }
+
+    &__menu{
+        transform: translateY(-100%);
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        height:100vh;
+        background-color: #333;
+         @include transition;
+
+
+         &.open{
+             transform: translateY(0);
+         }
+    }
+
+    &__nav-item{
+        padding:1rem;
+        margin-bottom: 10px ;
+        font-size: 30px;
+        @include transition();
+        transform: translateX(100vw);
+
+       
+
+        &.open{
+            transform: translateX(0);
+        }
+    }
+    &__nav-link{
+      
+
+        &:hover{
+            color:hsl(1 , 70% , 30%)
+
+        }
+    }
+}
+}
+
+@for $i from 1 through 4{
+    .header__nav-item:nth-child(#{$i}){
+       transition-delay: ($i * 0.1s) + .15s;
+    }
+}
+

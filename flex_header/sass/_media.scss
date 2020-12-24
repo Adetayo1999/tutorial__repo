@@ -1,0 +1,41 @@
+@include media{
+    .header__menu-btn{
+        transition: none;
+        visibility: hidden;
+      
+    }
+    .header__menu-ham{
+        transition: none;
+
+        &::after{
+            content: "";
+            transition: none !important;
+        }
+        &::before{
+            content: "";
+            transition: none !important;
+        }
+        
+    }
+    nav{
+        visibility: visible !important;
+    }
+
+    .header__menu{
+        transform: translateY(0);
+        display:block;
+        height:100%;
+        z-index:150;
+        // background-color: transparent;
+        width:100vw;
+        
+        // text-align: right;
+    }
+
+    .header__nav-item{
+        transform: translateX(0) !important;
+        display:inline;
+    }
+   
+
+}

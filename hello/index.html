@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world >>>>>>>>>>>>></h1>
+      <p></p>
+       <ul id="users">
+
+       </ul>
+    <script>
+        let Paragraph = document.getElementsByTagName('p')[0];
+        const Users = document.getElementById("users");
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+          if(this.status === 200){
+            const response = this.responseText;
+
+    // console.log(response);
+            //  Paragraph.innerText = response;
+          }else{
+            //  Paragraph.innerText = "File Not Found";
+          }
+        }
+        xhr.open("GET" , "http://localhost/Person.php" , true);
+            xhr.send();
+  
+    // fetch("http://localhost/users.json")
+    // .then(response => response.json())
+    // .then(result => {
+
+    //     result.map(user => { 
+    //         const Data = `
+    //           <pre>
+    //        <li>Name: ${user.name} </li>
+    //         <li>Email: ${user.email} </li>
+
+    //           </pre>
+    //     `
+    //      Users.innerHTML += Data;
+    //     })
+        
+    // })
+    // .catch(error => Users.innerText = "Something Went Wrong")
+
+    
+    // fetch("home.html")
+    // .then(response => response.text())
+    // .then(result => Paragraph.innerText = result)
+    // .catch(error => Paragraph.innerText = "Something Went Wrong")
+
+       
+    fetch("http://localhost/Person.php")
+    .then(response => response.text())
+    .then(result => Paragraph.innerText = result)
+    .catch(error => Paragraph.innerText = "Something Went Wrong")
+    </script>
+</body>
+</html>

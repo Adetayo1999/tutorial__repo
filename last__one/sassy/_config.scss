@@ -1,0 +1,26 @@
+
+$background:hsla( 0.3 , 50% , 50%, 0.87);
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    color:#fff;
+    text-decoration: none;
+}
+
+
+@mixin transition{
+    transition: all .45s ease-in-out;
+}
+
+@mixin media {
+       @media screen and (min-width:760px){
+           @content;
+       }
+}

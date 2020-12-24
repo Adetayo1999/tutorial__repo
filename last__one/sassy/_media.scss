@@ -1,0 +1,46 @@
+@include media{
+ .header{
+   
+    nav{
+         
+        visibility: visible !important;
+        width:100% !important;
+       
+    }
+
+    &__btn{
+        visibility: hidden;
+        transition: none;
+    }
+    &__hamburger{
+        transition: none;
+
+        &::before , &::after{
+            content:"";
+            transition: none !important;
+        }
+    }
+ 
+
+ &__nav{
+    display:block;
+    transform:translateY(0);
+    height:100%;
+    background-color: transparent;
+    text-align: right;
+         
+     &-item{
+         transform: translateX(0) ;
+         width:100%;
+         display: inline ;
+         border:none ;
+
+        &.active{
+            border:none !important;
+        }
+     }
+ }
+
+}
+    
+}
